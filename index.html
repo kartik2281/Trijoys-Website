@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trijoy - Engineering New Worlds</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Define main colors for easier theming */
+            --color-primary: #06b6d4; /* cyan-500 */
+            --color-secondary: #84cc16; /* lime-500 */
+            --color-dark: #0f172a; /* slate-900 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #e2e8f0; /* Default text color to a light slate */
+            background-color: var(--color-dark);
+            /* Updated background to be more subtle and atmospheric */
+            background-image:
+                radial-gradient(at 0% 0%, hsla(253, 100%, 7%, 0.6) 0px, transparent 50%),
+                radial-gradient(at 90% 10%, hsla(289, 100%, 9%, 0.6) 0px, transparent 50%),
+                radial-gradient(at 20% 80%, hsla(212, 100%, 15%, 0.6) 0px, transparent 50%);
+        }
+
+        /* Use Rajdhani for main headings for a modern, techy look */
+        .header-font {
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .hero-section {
+            height: 100vh;
+            /* Subtler, denser grid pattern */
+            background-image:
+                linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8)),
+                linear-gradient(to right, rgba(6, 182, 212, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        /* Enhanced Text Glow for Hero Title */
+        .text-glow-enhanced {
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.8), 0 0 25px rgba(132, 204, 22, 0.6), 0 0 40px rgba(6, 182, 212, 0.3);
+        }
+
+        /* Improved Card Hover Effect: subtle 3D lift and brighter shadow */
+        .card-hover-effect {
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .card-hover-effect:hover {
+            transform: translateY(-12px) rotateX(2deg); /* Added a slight rotation for drama */
+            box-shadow: 0 15px 35px -5px rgba(6, 182, 212, 0.4), 0 5px 15px -5px rgba(6, 182, 212, 0.2);
+        }
+        
+        /* Utility for Background Hover */
+        .bg-hover-gradient:hover {
+            background-color: var(--color-primary);
+            /* Optional: Add a subtle color shift on hover */
+            background-image: linear-gradient(to right, rgba(6, 182, 212, 0.9), rgba(132, 204, 22, 0.8));
+        }
+
+        /* Gradient Text (re-used and kept) */
+        .text-gradient {
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <header class="bg-slate-900/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-cyan-700/50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+             <img 
+                src="photos/Photo5.png" 
+                alt="TriJoy Game Studio Logo" 
+                class="h-10 md:h-12 object-contain"
+            /> 
+            <nav class="hidden md:flex space-x-8">
+                <a href="#projects" class="text-lg font-semibold text-gray-300 hover:text-cyan-400 transition duration-300 relative group">
+                    Projects
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#services" class="text-lg font-semibold text-gray-300 hover:text-cyan-400 transition duration-300 relative group">
+                    Services
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#about" class="text-lg font-semibold text-gray-300 hover:text-cyan-400 transition duration-300 relative group">
+                    About
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#contact" class="text-lg font-semibold text-gray-300 hover:text-cyan-400 transition duration-300 relative group">
+                    Contact
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none p-2 rounded-md hover:bg-slate-700 transition">
+                 <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800/95">
+            <a href="#projects" class="block py-3 px-6 text-base font-medium hover:bg-cyan-900/30 border-t border-slate-700/50">Projects</a>
+            <a href="#services" class="block py-3 px-6 text-base font-medium hover:bg-cyan-900/30 border-t border-slate-700/50">Services</a>
+            <a href="#about" class="block py-3 px-6 text-base font-medium hover:bg-cyan-900/30 border-t border-slate-700/50">About</a>
+            <a href="#contact" class="block py-3 px-6 text-base font-medium hover:bg-cyan-900/30 border-t border-slate-700/50">Contact</a>
+        </div>
+    </header>
+
+     <main class="hero-section flex items-center justify-center text-center">
+        <div class="container mx-auto px-6 pt-20">
+            <!-- NEW HERO TEXT -->
+            <h2 class="header-font text-5xl md:text-7xl font-extrabold text-white tracking-widest text-glow-enhanced">
+                TriJoys — <span class="text-gradient">Where Fun Meets Creation</span>
+            </h2>
+            <h3 class="header-font text-2xl md:text-3xl text-gray-200 mt-4 tracking-wide">
+                Crafting Worlds • Creating Joy
+            </h3>
+            <p class="text-lg md:text-2xl text-gray-300 mt-6 max-w-4xl mx-auto font-light">
+                Welcome to TriJoys, an indie game studio building fun and engaging mobile games for everyone.
+            </p>
+            <a href="#projects" class="mt-12 inline-block bg-cyan-500 text-white font-bold text-xl px-10 py-4 rounded-full shadow-2xl shadow-cyan-500/50 hover:bg-cyan-600 transition-transform transform hover:scale-105 duration-500 hover:shadow-cyan-400/80 uppercase tracking-wider">
+                Explore Our Universe ✨
+            </a>
+        </div>
+    </main>
+    
+    <div class="h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
+
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="header-font text-4xl font-extrabold text-white uppercase">
+                    <span class="text-gradient">Projects</span>
+                </h2>
+                <p class="text-gray-400 mt-2 text-lg">The future is bright, and under construction.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-slate-900/50 backdrop-blur-lg border-2 border-dashed border-cyan-500/50 p-10 rounded-xl text-center shadow-2xl">
+                <div class="relative overflow-hidden rounded-lg mb-8">
+                    <img src="photos/Photo3.jpg" alt="Upcoming Game Placeholder" class="w-full h-auto object-cover rounded-lg transform hover:scale-[1.02] transition-transform duration-500 ease-in-out opacity-80 hover:opacity-100">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <span class="header-font text-white text-5xl md:text-7xl font-bold tracking-widest uppercase text-shadow-lg animate-pulse">
+                            *COMING SOON*
+                        </span>
+                    </div>
+                </div>
+                <h3 class="header-font text-3xl md:text-4xl font-bold text-white mb-4">Project: TROLL RUN (Working Title)</h3>
+                
+            </div>
+        </div>
+    </section>
+
+    <div class="h-px bg-gradient-to-r from-transparent via-lime-500/50 to-transparent"></div>
+
+    <section id="services" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="header-font text-4xl font-extrabold text-white uppercase">
+                    <span class="text-gradient">Our Expertise</span>
+                </h2>
+                <p class="text-gray-400 mt-2 text-lg">A deep dive into our capabilities and technology stack.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="bg-slate-900/50 backdrop-blur-lg border border-cyan-700/50 p-6 rounded-xl card-hover-effect flex flex-col items-center justify-center">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-cyan-500/20 mx-auto mb-4 border border-cyan-400/50">
+                        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white header-font">Mobile Game Development</h3>
+                </div>
+                <div class="bg-slate-900/50 backdrop-blur-lg border border-lime-700/50 p-6 rounded-xl card-hover-effect flex flex-col items-center justify-center">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-lime-500/20 mx-auto mb-4 border border-lime-400/50">
+                         <svg class="w-8 h-8 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white header-font">Slot Game Development</h3>
+                </div>
+                <div class="bg-slate-900/50 backdrop-blur-lg border border-cyan-700/50 p-6 rounded-xl card-hover-effect flex flex-col items-center justify-center">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-cyan-500/20 mx-auto mb-4 border border-cyan-400/50">
+                        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white header-font">Indie Games</h3>
+                </div>
+                <div class="bg-slate-900/50 backdrop-blur-lg border border-lime-700/50 p-6 rounded-xl card-hover-effect flex flex-col items-center justify-center">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-lime-500/20 mx-auto mb-4 border border-lime-400/50">
+                        <svg class="w-8 h-8 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-9-5.747l9 5.747 9-5.747m-18 0l9 5.747m-9-5.747l9-5.747 9 5.747M3 12l9-5.747"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white header-font">2D/3D Animation</h3>
+                </div>
+                <div class="bg-slate-900/50 backdrop-blur-lg border border-lime-700/50 p-6 rounded-xl card-hover-effect flex flex-col items-center justify-center">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-lime-500/20 mx-auto mb-4 border border-lime-400/50">
+                        <svg class="w-8 h-8 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white header-font">Unity Development</h3>
+                </div>
+                <div class="bg-slate-900/50 backdrop-blur-lg border border-cyan-700/50 p-6 rounded-xl card-hover-effect flex flex-col items-center justify-center">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-cyan-500/20 mx-auto mb-4 border border-cyan-400/50">
+                        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-6-6m0 0l-6 6m6-6v12"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white header-font">Spine Animation & Rigging</h3>
+                </div>
+                <div class="bg-slate-900/50 backdrop-blur-lg border border-lime-700/50 p-6 rounded-xl card-hover-effect flex flex-col items-center justify-center">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-lime-500/20 mx-auto mb-4 border border-lime-400/50">
+                        <svg class="w-8 h-8 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white header-font">Game Design</h3>
+                </div>
+                <div class="bg-slate-900/50 backdrop-blur-lg border border-cyan-700/50 p-6 rounded-xl card-hover-effect flex flex-col items-center justify-center">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-cyan-500/20 mx-auto mb-4 border border-cyan-400/50">
+                        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white header-font">Visual Effects in Games</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
+
+     <section id="about" class="py-20">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-14">
+      <h2 class="header-font text-4xl md:text-5xl font-extrabold text-white">
+        Meet The Minds Behind <span class="text-gradient">TriJoys</span>
+      </h2>
+      <div class="mt-4 flex justify-center">
+        <div class="h-1 w-24 bg-gradient-to-r from-cyan-400 via-lime-400 to-cyan-400 rounded-full"></div>
+      </div>
+      <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-lg">
+        A blend of storytelling, tech, and pure love for games – powering every world we create.
+      </p>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-center gap-12">
+      <!-- Image / Visual Side -->
+      <div class="md:w-1/2">
+        <div class="relative w-full max-w-md mx-auto">
+          <div class="absolute -inset-2 bg-gradient-to-tr from-cyan-500/40 via-purple-500/30 to-lime-400/40 blur-2xl opacity-70"></div>
+          <img
+            src="photos/Photo2.jpg"
+            alt="Trijoy Team Photo"
+            class="relative rounded-2xl shadow-2xl shadow-slate-900/70 w-full border border-cyan-500/40"
+          />
+          <div class="mt-4 bg-slate-900/70 border border-slate-700 rounded-xl px-4 py-3 flex items-center gap-3 backdrop-blur">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-cyan-500/20 border border-cyan-400/50 text-cyan-300 text-xl">
+              🎮
+            </span>
+            <p class="text-sm text-gray-300">
+              From animation &amp; VFX to interactive worlds – TriJoys is built on years of creative experience.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text / Cards Side -->
+      <div class="md:w-1/2 space-y-6">
+        <!-- Founder -->
+        <div class="bg-slate-900/70 border border-cyan-500/50 rounded-2xl p-6 shadow-xl shadow-cyan-900/40">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="header-font text-3xl font-extrabold text-white">
+              Shubham Garg
+            </h3>
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/60">
+              Founder
+            </span>
+          </div>
+          <p class="text-sm uppercase tracking-wide text-cyan-300 mb-3">
+            Animation • VFX • Game Direction
+          </p>
+          <p class="text-gray-400 mb-3 leading-relaxed text-base">
+            Hey there 👋 I'm the founder of TriJoys, and after spending over a decade in the animation,
+            VFX, and gaming industry, I finally decided to follow my heart and open my dream studio.
+          </p>
+          <p class="text-gray-400 mb-3 leading-relaxed text-base">
+            I've had the chance to work on some amazing movies, TV series, and games, and for the last couple
+            of years, I've been diving deep into Spine animation — rigging, skinning, VFX, 3D-style effects, you name it!
+          </p>
+          <p class="text-gray-200 leading-relaxed text-base font-semibold">
+            At TriJoys, we’re not just building games… we're building experiences filled with color, energy, and happiness 🌟.
+          </p>
+        </div>
+
+        <!-- Co-Founder -->
+        <div class="bg-slate-900/70 border border-lime-500/50 rounded-2xl p-6 shadow-xl shadow-lime-900/30">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="header-font text-2xl md:text-3xl font-extrabold text-white">
+              Nishu Mishra
+            </h3>
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-lime-500/20 text-lime-300 border border-lime-400/60">
+              Co-Founder
+            </span>
+          </div>
+          <p class="text-sm uppercase tracking-wide text-lime-300 mb-3">
+            Unity Developer • Gameplay • Systems
+          </p>
+          <p class="text-gray-400 leading-relaxed text-base">
+            Hey there 👋 I'm the Co-Founder of TriJoys, and with 3 years of hands-on experience in the gaming industry as a Unity Developer, I’ve been dedicated to building fun, responsive, and immersive gameplay experiences.
+            From gameplay systems to creative problem-solving, I love contributing fresh ideas and helping shape every project we bring to life!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <div class="h-px bg-gradient-to-r from-transparent via-lime-500/50 to-transparent"></div>
+
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="header-font text-4xl font-extrabold text-white uppercase">
+                    <span class="text-gradient">Connect With Us</span>
+                </h2>
+                <p class="text-gray-400 mt-2 text-lg">Let's turn your next big idea into an unforgettable gaming experience.</p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-slate-900/50 backdrop-blur-lg border border-slate-700 p-8 md:p-12 rounded-xl shadow-2xl shadow-cyan-900/50">
+                    
+                    <h3 class="header-font text-3xl font-bold text-white mb-8 text-center border-b border-slate-700 pb-4">Key Contacts</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="bg-slate-800/70 p-6 rounded-lg border-l-4 border-cyan-500">
+                            <h4 class="text-xl font-bold text-cyan-400 mb-2 header-font">Shubham Garg <span class="text-sm text-gray-400">(Founder)</span></h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <svg class="w-6 h-6 text-lime-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                    <span class="text-gray-300">shubhamgarg@trijoys.com</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-6 h-6 text-lime-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                    <span class="text-gray-300">shubhgarg.642@gmail.com</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-6 h-6 text-lime-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                    <span class="text-gray-300">7503438800</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-800/70 p-6 rounded-lg border-l-4 border-lime-500">
+                            <h4 class="text-xl font-bold text-lime-400 mb-2 header-font">Nishu Mishra <span class="text-sm text-gray-400">(Co-Founder)</span></h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <svg class="w-6 h-6 text-cyan-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                    <span class="text-gray-300">nishumishra@trijoys.com</span>
+                                </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-700 pt-6">
+                         <div class="flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-cyan-400 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span class="text-gray-300 text-lg">Delhi NCR, Uttar Pradesh (India)</span>
+                        </div>
+                        <div class="flex justify-center space-x-8">
+                            <a href="https://www.linkedin.com/company/trijoy/" target="_blank" class="text-gray-400 hover:text-cyan-400 transition duration-300 bg-slate-800/70 p-3 rounded-full hover:scale-110">
+                                 <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a href="https://www.instagram.com/trijoysgames/" target="_blank" class="text-gray-400 hover:text-cyan-400 transition duration-300 bg-slate-800/70 p-3 rounded-full hover:scale-110">
+                                 <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.465c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 7.177a4.823 4.823 0 100 9.646 4.823 4.823 0 000-9.646zm0 7.692a2.869 2.869 0 110-5.738 2.869 2.869 0 010 5.738zM16.965 6.57a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clip-rule="evenodd" /></svg>
+                            </a>
+                            <a href="https://www.youtube.com/@TriJoys" target="_blank" class="text-gray-400 hover:text-red-600 transition duration-300 bg-slate-800/70 p-3 rounded-full hover:scale-110">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.615 3.184c-3.613-.244-11.838-.244-15.451 0C.72 3.428 0 5.86 0 12c0 6.14 0 8.572 4.164 8.816C7.777 21.06 12 21.06 15.836 20.816c3.613-.244 4.164-2.676 4.164-8.816s-.551-8.572-4.385-8.816zM10.875 15.65v-7.3l5.42 3.65-5.42 3.65z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-transparent mt-10">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500 border-t border-slate-700/50">
+            <p>&copy; 2025 Trijoys. All Rights Reserved. | Designed with <span class="text-red-500">❤️</span></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileMenuLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+    </script>
+
+</body>
+</html>
